@@ -109,6 +109,12 @@ body {
 html.escritorio,
 html.escritorio body {
   background: transparent;
+  overflow: hidden;
+}
+
+html.escritorio #root {
+  box-sizing: border-box;
+  padding: 6px;
 }
 
 .titulo {
@@ -147,8 +153,9 @@ html.escritorio body {
 }
 
 html.escritorio .marco {
-  height: calc(100% - 12px);
-  margin: 6px;
+  height: 100%;
+  max-width: none;
+  margin: 0;
   border-radius: 22px;
   border: 1px solid var(--borde-fuerte);
   box-shadow: 0 4px 14px rgb(0 0 0 / 0.35);

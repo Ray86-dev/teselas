@@ -51,7 +51,7 @@ export function Pildora() {
   }
 
   return (
-    <div className="h-full p-1.5">
+    <div className="h-full">
       <div
         role="button"
         tabIndex={0}
