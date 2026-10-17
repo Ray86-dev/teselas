@@ -1,0 +1,264 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/nunito';
+
+/* ─────────────────────────────────────────────────────────────
+   Teselas · «Noche dorada» (oscuro) y «Papel» (claro)
+   Inspirado en la etapa dorada de Klimt: pan de oro, prado de flores,
+   espirales y rectángulos blancos y negros.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --fondo: #15110d;
+  --fondo-2: #1d1813;
+  --tarjeta: #241d16;
+  --tarjeta-hecha: #2f2616;
+  --borde: rgb(217 180 90 / 0.15);
+  --borde-fuerte: rgb(217 180 90 / 0.38);
+  --tinta: #f4ebdd;
+  --tinta-2: #c9bca8;
+  --tinta-3: #908371;
+  --oro: #d9b45a;
+  --oro-claro: #f0d58c;
+  --oro-oscuro: #9e7a2e;
+  --sobre-oro: #2a1f0e;
+  --violeta: #a183cc;
+  --amapola: #d6643f;
+  --prado: #84ad6e;
+  --azul: #6585c9;
+  --sombra: 0 18px 50px -18px rgb(0 0 0 / 0.65);
+  --velo: rgb(10 8 6 / 0.62);
+  --tesela-a: #2b231a;
+  --tesela-b: #1f1914;
+  --tesela-linea: rgb(217 180 90 / 0.42);
+  --tesela-borde: rgb(217 180 90 / 0.16);
+  color-scheme: dark;
+}
+
+:root[data-tema='claro'] {
+  --fondo: #f5eedf;
+  --fondo-2: #fbf6ec;
+  --tarjeta: #fffcf6;
+  --tarjeta-hecha: #fbf0d4;
+  --borde: rgb(140 104 30 / 0.16);
+  --borde-fuerte: rgb(140 104 30 / 0.4);
+  --tinta: #2a2017;
+  --tinta-2: #5e5141;
+  --tinta-3: #8b7c68;
+  --oro: #b98f2f;
+  --oro-claro: #e2c06a;
+  --oro-oscuro: #86631a;
+  --sobre-oro: #2a1f0e;
+  --violeta: #7d5bb0;
+  --amapola: #c2512d;
+  --prado: #5d8a48;
+  --azul: #4467ad;
+  --sombra: 0 18px 44px -20px rgb(80 56 10 / 0.35);
+  --velo: rgb(60 44 20 / 0.35);
+  --tesela-a: #ece2ce;
+  --tesela-b: #e0d3b9;
+  --tesela-linea: rgb(150 112 34 / 0.5);
+  --tesela-borde: rgb(150 112 34 / 0.2);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-fondo: var(--fondo);
+  --color-fondo-2: var(--fondo-2);
+  --color-tarjeta: var(--tarjeta);
+  --color-tarjeta-hecha: var(--tarjeta-hecha);
+  --color-borde: var(--borde);
+  --color-borde-fuerte: var(--borde-fuerte);
+  --color-tinta: var(--tinta);
+  --color-tinta-2: var(--tinta-2);
+  --color-tinta-3: var(--tinta-3);
+  --color-oro: var(--oro);
+  --color-oro-claro: var(--oro-claro);
+  --color-oro-oscuro: var(--oro-oscuro);
+  --color-sobre-oro: var(--sobre-oro);
+  --color-violeta: var(--violeta);
+  --color-amapola: var(--amapola);
+  --color-prado: var(--prado);
+  --color-azul: var(--azul);
+  --font-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Nunito Variable', 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--tinta);
+  background: var(--fondo);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* En escritorio la ventana es transparente: el marco redondeado es lo que se ve */
+html.escritorio,
+html.escritorio body {
+  background: transparent;
+}
+
+.titulo {
+  font-family: var(--font-display);
+  font-variation-settings:
+    'SOFT' 100,
+    'WONK' 0,
+    'opsz' 48;
+  letter-spacing: -0.01em;
+}
+
+/* ── Marco principal ─────────────────────────────────────── */
+
+.marco {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background:
+    radial-gradient(120% 60% at 85% -10%, rgb(217 180 90 / 0.13), transparent 60%),
+    radial-gradient(90% 50% at -10% 110%, rgb(132 173 110 / 0.08), transparent 60%),
+    var(--fondo);
+  overflow: hidden;
+}
+
+@media (min-width: 560px) {
+  html:not(.escritorio) .marco {
+    height: min(860px, calc(100% - 48px));
+    margin-top: 24px;
+    border-radius: 28px;
+    border: 1px solid var(--borde);
+    box-shadow: var(--sombra);
+  }
+}
+
+html.escritorio .marco {
+  height: calc(100% - 12px);
+  margin: 6px;
+  border-radius: 22px;
+  border: 1px solid var(--borde-fuerte);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.35);
+}
+
+/* Patrón de círculos dorados, como el vestido de Adele, casi invisible */
+.ornamento-fondo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23d9b45a' stroke-width='1.1'%3E%3Ccircle cx='22' cy='24' r='9'/%3E%3Ccircle cx='22' cy='24' r='4'/%3E%3Ccircle cx='70' cy='68' r='6'/%3E%3C/g%3E%3Cg fill='%23d9b45a'%3E%3Ccircle cx='70' cy='68' r='1.6'/%3E%3Ccircle cx='76' cy='20' r='1.4'/%3E%3Ccircle cx='28' cy='78' r='1.4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.desplazable {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--borde-fuerte) transparent;
+}
+
+/* ── Pan de oro ──────────────────────────────────────────── */
+
+.hoja-oro {
+  background:
+    radial-gradient(circle at 30% 25%, rgb(255 246 214 / 0.55), transparent 45%),
+    linear-gradient(135deg, #f6dd93 0%, #d4a843 30%, #f2d27a 52%, #b98a2e 74%, #e9c46a 100%);
+  color: var(--sobre-oro);
+}
+
+.boton-oro {
+  background: linear-gradient(135deg, #f3d88e 0%, #d6ab48 45%, #c0922f 100%);
+  color: var(--sobre-oro);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    0 6px 18px -8px rgb(185 138 46 / 0.8);
+}
+
+.boton-oro:active {
+  transform: translateY(1px);
+}
+
+/* ── Teselas sin descubrir ───────────────────────────────────
+   Oscuras, con motivos en hilo de oro: el cuadro va saliendo de la penumbra. */
+
+.tesela {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--tesela-a) 0%, var(--tesela-b) 60%, var(--tesela-a) 100%);
+  box-shadow:
+    inset 0 0 0 0.5px var(--tesela-borde),
+    inset 1px 1px 0 rgb(255 240 200 / 0.05);
+}
+
+.tesela svg {
+  position: absolute;
+  inset: 16%;
+  width: 68%;
+  height: 68%;
+  color: var(--tesela-linea);
+}
+
+/* Junta de mosaico sobre las teselas ya descubiertas */
+.junta {
+  box-shadow: inset 0 0 0 0.5px rgb(20 14 6 / 0.35);
+}
+
+/* ── Accesibilidad ───────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Respiración */
+@keyframes brillo {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.brillo {
+  animation: brillo 3.2s ease-in-out infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.girar-lento {
+  animation: girar 60s linear infinite;
+}
